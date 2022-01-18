@@ -1,0 +1,7 @@
+# Client Resources
+client/node_modules/
+
+# Server Resources
+server/venv/
+server/__pycache__/
+server/segmented/
