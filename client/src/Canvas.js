@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
+import { Col, Container, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import sketch from './sketches/sketch';
 import UploadButton from './UploadButton';
 import Output from './Output';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 let savedImage = '';
 
@@ -79,61 +80,48 @@ class Canvas extends Component {
 
     render() {
       return (
-        <div className="container ">
-          <br/>
-          <div className="row">
-            <div className="col-sm-12 col-md-6 offset-md-2">
-              Draw the equation below
-            </div>
-          </div>
-          <br/>
-          <div className="row align-items-center">
-            <div className="col-12 col-md-6 border border-dark offset-md-2">
-              <P5Wrapper sketch={sketch} 
+        <Container fluid>          
+          <Row>            
+            {/* Whiteboard */}
+            <Col xl={9}>
+              <P5Wrapper 
+                sketch={sketch} 
                 color={this.state.color} 
                 evaluate={this.state.evaluate}
                 callBack={this.pseudo}>
               </P5Wrapper>
-            </div>
-            <div className="col-6 col-md-2">
-              <div className="row">
-                <div className="col">
-                  <button 
-                    type="button" 
-                    onClick={this.state.evaluate? () => this.sendImgToServer(savedImage): this.onEval}
-                    className="btn btn-primary btn-block "
-                    >
-                    {this.state.evaluate? "Evaluate":"Save"}
-                  </button>
-                </div>
-              </div>
+            </Col>
+            
+            {/* Interface */}
+            <Col xl={3}>
               <br/>
-              <div className="row">
-                <div className="col">
-                  <button 
-                    type="button" 
-                    onClick={this.onClear} 
-                    className="btn btn-danger btn-block "
-                    >
-                    Clear
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br/><br/>
-          <div className="row">
-            <div className="offset-md-3">
+              <button 
+                type="button" 
+                onClick={this.state.evaluate? () => this.sendImgToServer(savedImage): this.onEval}
+                className="btn btn-primary btn-block "
+                >
+                {this.state.evaluate? "Evaluate":"Save"}
+              </button>
+              <br/>
+                <button 
+                  type="button" 
+                  onClick={this.onClear} 
+                  className="btn btn-danger btn-block "
+                  >
+                  Clear
+                </button>
+              <br/>
               <UploadButton sendImgToServer={this.sendImgToServer} />
-            </div>
-          </div>
-          <br/><br/>
-          <Output 
-            equation={this.state.equation} 
-            formatted_equation={this.state.formatted_equation}
-            result={this.state.result}
-          />
-        </div>
+            </Col>
+          </Row>
+          <Row>
+            <Output 
+              equation={this.state.equation} 
+              formatted_equation={this.state.formatted_equation}
+              result={this.state.result}
+            />
+          </Row>
+        </Container>
       );
     }
 }

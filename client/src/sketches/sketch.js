@@ -2,7 +2,7 @@ export default function sketch(p){
     let canvasObj;
     
     p.setup = () => {
-        canvasObj = p.createCanvas(550, 300);
+        canvasObj = p.createCanvas(1187.25, 700);
     }
 
     p.draw = () => {}
@@ -22,7 +22,7 @@ export default function sketch(p){
             }
         }
         if(props.color){
-            p.background(255);
+            p.background(240);
         }
     }
 }
