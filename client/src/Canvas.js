@@ -83,7 +83,7 @@ class Canvas extends Component {
         <Container fluid>          
           <Row>            
             {/* Whiteboard */}
-            <Col xl={9}>
+            <Col className="border border-dark" xl={9}>
               <P5Wrapper 
                 sketch={sketch} 
                 color={this.state.color} 
