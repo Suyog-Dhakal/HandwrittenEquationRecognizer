@@ -3,13 +3,14 @@ from sympy import solve
 from sympy.parsing.sympy_parser import parse_expr
 
 def solve_meThis(string_):
-    try:
-        lhs =  parse_expr(string_.split("=")[0])
-        rhs =  parse_expr(string_.split("=")[1])
-        solution = solve(lhs-rhs)
-        return solution
-    except:
-        print("invalid equation")
+    # try:
+    #     lhs =  parse_expr(string_.split("=")[0])
+    #     rhs =  parse_expr(string_.split("=")[1])
+    #     solution = solve(lhs-rhs)
+    #     return solution
+    # except:
+    #     print("invalid equation")
+    return 
 
 def solver(operation):
     def operate(fb, sb, op):
@@ -75,12 +76,12 @@ def calculate(operation):
         string = string.replace('L', '/')
     if 'g' in string:
         string = string.replace('g', '9')
-    if '=' not in string:
-        if 'x' in string:
-            string = string.replace('x', '*')
-        if 'X' in string:
-            string = string.replace('X', '*')
-        return string, eval(string)
+    # if '=' not in string:
+    # if 'x' in string:
+    #     string = string.replace('x', '*')
+    # if 'X' in string:
+    #     string = string.replace('X', '*')
+    # return string, eval(string)
         
     operation = string
     string = ''
@@ -102,7 +103,7 @@ def calculate(operation):
         
     
     print(string)
-    if '=' not in string:
-        return string, solver(string)
-    else:
-        return string, solve_meThis(string)
+    # if '=' not in string:
+    #     return string, solver(string)
+    # else:
+    #     return string, solve_meThis(string)
