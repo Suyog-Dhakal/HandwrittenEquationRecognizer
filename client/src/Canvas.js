@@ -3,8 +3,8 @@ import P5Wrapper from "react-p5-wrapper";
 import { Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import sketch from "./sketches/sketch";
-import UploadButton from "./UploadButton";
 import Output from "./Output";
+import "./Canvas.css";
 
 let savedImage = "";
 
@@ -14,9 +14,7 @@ class Canvas extends Component {
     this.state = {
       color: false,
       evaluate: false,
-      //equation: "",
       formatted_equation: "",
-      // result: "",
     };
   }
 
@@ -45,9 +43,7 @@ class Canvas extends Component {
         this.setState({
           color: false,
           evaluate: false,
-          //equation: data1["Entered_equation"],
           formatted_equation: data1["Formatted_equation"],
-          //result: data1["solution"],
         });
         console.log(this.state);
       })
@@ -60,9 +56,7 @@ class Canvas extends Component {
     this.setState({
       color: true,
       evaluate: false,
-      //equation: "",
       formatted_equation: "",
-      //result: "",
     });
   };
 
@@ -70,9 +64,7 @@ class Canvas extends Component {
     this.setState({
       color: false,
       evaluate: true,
-      //equation: "",
       formatted_equation: "",
-      //result: "",
     });
   };
 
@@ -81,14 +73,22 @@ class Canvas extends Component {
       <Container fluid>
         <Row>
           {/* Whiteboard */}
-          <Col className="border border-dark" xl={9}>
-            <P5Wrapper
-              sketch={sketch}
-              color={this.state.color}
-              evaluate={this.state.evaluate}
-              callBack={this.pseudo}
-            ></P5Wrapper>
-          </Col>
+          <div className="whiteboard">
+            <Col className="border border-dark" xl={12}>
+              <P5Wrapper
+                sketch={sketch}
+                color={this.state.color}
+                evaluate={this.state.evaluate}
+                callBack={this.pseudo}
+              ></P5Wrapper>
+            </Col>
+          </div>
+
+          <div className="formatted-Equation col-md-8">
+            <row>
+              <Output formatted_equation={this.state.formatted_equation} />
+            </row>
+          </div>
 
           {/* Interface */}
           <Col xl={2}>
@@ -100,28 +100,20 @@ class Canvas extends Component {
                   ? () => this.sendImgToServer(savedImage)
                   : this.onEval
               }
-              className="btn btn-primary btn-block "
+              className="btn btn-success btn-block "
             >
-              {this.state.evaluate ? "Evaluate" : "Save"}
+              {this.state.evaluate ? "Predict" : "Save"}
             </button>
             <br />
             <button
               type="button"
               onClick={this.onClear}
-              className="btn btn-danger btn-block "
+              className="btn btn-dark btn-block "
             >
               Clear
             </button>
             <br />
-            <UploadButton sendImgToServer={this.sendImgToServer} />
           </Col>
-        </Row>
-        <Row>
-          <Output
-            //equation={this.state.equation}
-            formatted_equation={this.state.formatted_equation}
-            //result={this.state.result}
-          />
         </Row>
       </Container>
     );
