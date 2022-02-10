@@ -8,7 +8,7 @@ function Output(props) {
       <Form>
         <Form.Group as={Row} controlId="output1">
           <Form.Label column sm="3">
-            Formatted Equation
+            Recognized Expression:-
           </Form.Label>
           <Col sm="5">
             <Form.Control readOnly placeholder={props.formatted_equation} />
