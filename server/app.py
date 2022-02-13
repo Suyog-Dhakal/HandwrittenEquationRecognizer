@@ -30,17 +30,13 @@ class Predict(Resource):
         operation = BytesIO(base64.urlsafe_b64decode(args['image']))
         operation = main(operation)
         print("operation :", operation)
-        # print("solution :", calculate(operation))
         os.mkdir('internals')
         shutil.move('segmented', 'internals')
         shutil.move('input.png', 'internals')
         shutil.move('segmented_characters.csv', 'internals')
         formatted_equation = calculate(operation)
-        # solution = " ".join(str(x) for x in solution)
         return json.dumps({
-            # 'Entered_equation': operation,
             'Formatted_equation': formatted_equation,
-            # 'solution': solution
         })
 
 api.add_resource(Predict, "/predict")
