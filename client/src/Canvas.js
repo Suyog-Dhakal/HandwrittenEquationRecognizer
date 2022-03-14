@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import sketch from "./sketches/sketch";
 import Output from "./Output";
 import "./Canvas.css";
+import UploadButton from "./UploadButton";
 
 let savedImage = "";
 
@@ -112,6 +113,13 @@ class Canvas extends Component {
             >
               Clear
             </button>
+            <br />
+            <div className="row">
+              <div className="offset-md-3">
+                <UploadButton sendImgToServer={this.sendImgToServer} />
+              </div>
+            </div>
+            <br />
             <br />
           </Col>
         </Row>
