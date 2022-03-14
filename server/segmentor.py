@@ -201,7 +201,6 @@ def image_segmentation(filepath):
 			lines.append((upperlines[y], lowerlines[y]))
 	else:
 		print("Unable to process the noisy image")
-		showimages()
 		k = cv2.waitKey(0)
 		while 1:
 			k = cv2.waitKey(0)
