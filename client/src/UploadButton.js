@@ -20,7 +20,7 @@ class UploadButton extends Component {
       .substring(event.target.files[0].name.lastIndexOf(".") + 1)
       .toLowerCase();
     let img = "";
-    if (extension === "jpg" || extension === "png" || extension === "jpeg") {
+    if (extension === "png") {
       img = URL.createObjectURL(event.target.files[0]);
       let file = event.target.files[0];
       let reader = new FileReader();
