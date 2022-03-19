@@ -48,11 +48,11 @@ def calculate(operation):
             string += head
         elif k.isnumeric() and not head.isnumeric():
             head = k
-            added = '**' + k
+            added = '^' + k
             string += added
         elif not k.isnumeric() and head.isnumeric():
             head = k
-            added = '*' + k
+            added = '' + k
             string += added
         
     
