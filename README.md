@@ -1,4 +1,4 @@
-Eqn recognizer
+Handwritten Equation recognizer
 
 -git pull
 
@@ -8,8 +8,8 @@ Eqn recognizer
 
 -pip install -r requirement.txt
 
--install npm inside client direcotry
+-install npm inside client directory
 
 -npm start
 
--python app.py inside server directory
+-run "python app.py" inside server directory
